@@ -1,4 +1,4 @@
 [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to = "/projects/angular-ngrx-material-starter/src/index.html"
   status = 200
