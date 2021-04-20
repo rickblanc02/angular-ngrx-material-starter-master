@@ -6,23 +6,15 @@
     <mat-form-field>
 
         <input matInput
-                placeholder="Name product"
+                placeholder="Nombre"
                formControlName="name">
 
     </mat-form-field>
-
+  
     <mat-form-field>
 
         <input matInput
-                placeholder="Prize"
-               formControlName="prize">
-
-    </mat-form-field>
-
-    <mat-form-field>
-
-        <input matInput
-                placeholder="Count"
+                placeholder="Cantidad"
                formControlName="count">
 
     </mat-form-field>
@@ -35,7 +27,6 @@
 
     </mat-form-field>
 
-  
 
     <mat-form-field>
 
@@ -62,7 +53,8 @@
         Close
     </button>
 
-    <button class="mat-raised-button mat-primary"
+    <!--<button disabled class="mat-raised-button mat-primary" -->
+   <button disabled class="mat-raised-button"
             (click)="save()">
         Save
     </button>

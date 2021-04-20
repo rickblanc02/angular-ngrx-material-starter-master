@@ -23,7 +23,7 @@ import { HttpEventType, HttpResponse } from '@angular/common/http';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductListComponent implements OnInit {
-  public displayedColumns = ['name', 'count', 'date_start', 'prize',  'details', 'update', 'delete'];
+  public displayedColumns = ['name', 'count', 'date_start', 'prize', 'gain', 'total', 'iva',  'tipo', 'details', 'update', 'delete'];
   
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
   //variables
