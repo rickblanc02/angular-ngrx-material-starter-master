@@ -7,7 +7,7 @@ export class Product {
     gain: number;
     total: number;
     iva: number;
-    tipo: number;
+    type: number;
     date_start: string;
   }
 

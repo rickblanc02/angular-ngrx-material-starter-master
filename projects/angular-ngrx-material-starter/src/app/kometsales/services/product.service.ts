@@ -20,7 +20,7 @@ export class ProductService {
 
   }
 
-  //Paginacion y sort
+  //paginate and sorting services
   getProductsListPage(offset, limit, sort): Observable<any[]>{
     
     let params = new HttpParams();
@@ -55,7 +55,7 @@ export class ProductService {
     return this.httpClient.delete(this.baseUrl+"products/"+id);
   }
 
-  //Archivo
+  //File
   upload(file: File): Observable<HttpEvent<any>>{
     const formData: FormData = new FormData();
     formData.append('files', file);

@@ -2,8 +2,6 @@ import { ProductDialogComponent } from './../product-dialog/product-dialog.compo
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import {  PageEvent, MatPaginator  } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { Observable } from 'rxjs';
-//import { Userdb, UserService } from './../../services/user.service';
 
 import { ProductService } from './../../services/product.service';
 import { Product } from './../../models/product';
@@ -35,11 +33,10 @@ export class ProductListComponent implements OnInit {
   loading: boolean = true;
 
   type = 'success';
-  //message = 'Operacion realizada con exito';
-
-  //para el archivo
+  
+  //files
   selectedFiles: FileList;
-  //Es el array que contiene los items para mostrar el progreso de subida de cada archivo
+  //array process bars  
   progressInfo = [];
   message = '';
   imageName = "";
@@ -52,19 +49,15 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
 
-    //Traemos la lista de productos una vez inicie la pantalla    
-    //this.users$ = this.userService.getUsersList();
     //this.products = this.productService.getProductsList();
     //Sin paginar
     //this.getProducts();
-    //Paginado
+    //Paginate
     this.getProductsPage('0', '5', 'count');
     this.progressInfo[0] = { value: 0, fileName: "" };
     
   }
 
-
-  //este sort es solo para la carga en pantalla no en el servidor
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
   }
@@ -84,6 +77,7 @@ export class ProductListComponent implements OnInit {
       product: product
     };*/
 
+    //pass objet product
     dialogConfig.data = {      
       name: product.name,
       cost: product.cost,
@@ -92,7 +86,6 @@ export class ProductListComponent implements OnInit {
       prize: product.prize,
   };
 
-  console.log(dialogConfig.data)
 
   const dialogRef = this.dialog.open(ProductDialogComponent,
       dialogConfig);
@@ -107,7 +100,7 @@ export class ProductListComponent implements OnInit {
     
   }
 
-  //Metodos
+  //Methods
   public getProducts = () => {
     this.productService.getProductsList()
     .subscribe(res => {
@@ -116,7 +109,7 @@ export class ProductListComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
     })
   }
-  //Paginado y sort
+  //paginate and sorting methods start
   public getProductsPage = (offset, limit, sort) => {
        
     //this.http.get('http://localhost:3000/users?' + params.toString())
@@ -136,7 +129,7 @@ export class ProductListComponent implements OnInit {
     })
   }
 
-  //Paginado y sort
+  //paginate and sorting next button
   public getProductsPageNext = (currentSize, offset, limit, sort) => {
            
     this.productService.getProductsListPage(offset, limit, sort)
@@ -172,7 +165,7 @@ export class ProductListComponent implements OnInit {
     this.getProductsPageNext(previousSize, (pageIndex).toString(), pageSize.toString(), 'count');
   }
 
-  //Archivo metodos
+  //files methods
   selectFiles(event) {
     this.progressInfo = [];
     event.target.files.length == 1 ? this.imageName = event.target.files[0].name : this.imageName = event.target.files.length + " archivos";
