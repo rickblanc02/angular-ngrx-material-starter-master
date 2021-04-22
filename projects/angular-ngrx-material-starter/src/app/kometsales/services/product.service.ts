@@ -8,8 +8,7 @@ import { Product } from '../models/product';
   providedIn: 'root'
 })
 export class ProductService {
-  //https://app-tours.herokuapp.com/
-  //private baseUrl = "http://localhost:8080/api/v1/";
+  
   private baseUrl = "https://app-tours.herokuapp.com/api/v1/";
 
   constructor(private httpClient: HttpClient) { }
@@ -28,7 +27,6 @@ export class ProductService {
     params = params.set('size', limit);
     params = params.set('sort', sort);
     
-    //this.http.get('http://localhost:3000/users?' + params.toString())
     return this.httpClient.get<any[]>(this.baseUrl+"products/p?" + params.toString());
 
   }
