@@ -24,11 +24,9 @@ export class ProductListComponent implements OnInit {
   public displayedColumns = ['name', 'count', 'date_start', 'prize', 'gain', 'total', 'iva',  'tipo', 'details', 'update', 'delete'];
   
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
-  //variables
+  
   products: Product[];
-  //products: Observable<Product[]>;
-  //users$: Observable<Userdb[]>;
-
+  
   dataSource = new MatTableDataSource<Product>();  
   loading: boolean = true;
 
@@ -49,9 +47,6 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
 
-    //this.products = this.productService.getProductsList();
-    //Sin paginar
-    //this.getProducts();
     //Paginate
     this.getProductsPage('0', '5', 'count');
     this.progressInfo[0] = { value: 0, fileName: "" };
@@ -73,10 +68,7 @@ export class ProductListComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
 
-    /*dialogConfig.data = {
-      product: product
-    };*/
-
+  
     //pass objet product
     dialogConfig.data = {      
       name: product.name,
@@ -111,8 +103,7 @@ export class ProductListComponent implements OnInit {
   }
   //paginate and sorting methods start
   public getProductsPage = (offset, limit, sort) => {
-       
-    //this.http.get('http://localhost:3000/users?' + params.toString())
+           
     this.productService.getProductsListPage(offset, limit, sort)
     .subscribe((res: any) => {
 
@@ -125,7 +116,7 @@ export class ProductListComponent implements OnInit {
 
 
       this.dataSource.paginator = this.paginator;
-      //his.dataSource.data = res as Product[];
+      
     })
   }
 
@@ -133,7 +124,7 @@ export class ProductListComponent implements OnInit {
   public getProductsPageNext = (currentSize, offset, limit, sort) => {
            
     this.productService.getProductsListPage(offset, limit, sort)
-   // .subscribe(res => {
+   
     .subscribe((res: any) => {
       
       this.loading = false;
@@ -181,7 +172,7 @@ export class ProductListComponent implements OnInit {
           this.progressInfo[index].value = Math.round(100 * event.loaded / event.total);
           this.getProductsPage('0', '5', 'count');
         } else if (event instanceof HttpResponse) {
-          //this.fileInfos = this.productService.getFiles();
+          
         }
       },
       err => {
@@ -201,16 +192,3 @@ export class ProductListComponent implements OnInit {
 
 }
 
-
-/*
- private getProducts02(){
-
-    this.productService.getProductsList().subscribe(data =>{
-
-      //this.products = data;
-
-      }
-    )
-
-  }
-*/

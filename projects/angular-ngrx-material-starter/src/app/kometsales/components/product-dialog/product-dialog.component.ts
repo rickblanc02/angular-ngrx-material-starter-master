@@ -18,26 +18,21 @@ export class ProductDialogComponent implements OnInit {
   
   name:string;
   descripcion:string;
-  //name: Observable<string>;
-
+  
 
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<ProductDialogComponent>,
-    
-    //@Inject(MAT_DIALOG_DATA) {name,prize, count, date_start, cost}:Product ) {
+  
       @Inject(MAT_DIALOG_DATA) product:Product ) {
 
-    this.descripcion ="Editar Producto";
+    this.descripcion ="Update Product";
     this.name =product.name;
-    
-  
-
+      
     this.form = fb.group({
       name: [product.name, Validators.required],
       prize: [product.prize, Validators.required],
-      count: [product.count, Validators.required],
-      //date_start: [moment(), Validators.required],
+      count: [product.count, Validators.required],      
       date_start: [product.date_start, Validators.required],
       cost: [product.cost,Validators.required]
     });   
