@@ -136,8 +136,7 @@ export class ProductListComponent implements OnInit {
       this.dataSource = new MatTableDataSource<any>(this.products);
       
       this.dataSource._updateChangeSubscription();
-     
-      //this.dataSource.data = res as Product[];
+           
       this.dataSource.paginator = this.paginator;
     })
   }
