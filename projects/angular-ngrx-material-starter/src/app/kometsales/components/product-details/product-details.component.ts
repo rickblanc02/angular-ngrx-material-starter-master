@@ -13,16 +13,13 @@ import { Router } from '@angular/router';
 })
 export class ProductDetailsComponent implements OnInit {
 
-  //variables
   products: Product[];
   type = 'success';
-  message = 'Operacion realizada con exito';
 
   constructor(private productService: ProductService, private router: Router) { }
 
   ngOnInit(): void {
-
-    //Traemos la lista de productos una vez inicie la pantalla
+   
     this.getProducts();
 
   }
